@@ -8,7 +8,7 @@ class Game(models.Model):
     final_score = models.CharField(max_length=20)  # Example: "3-1 Win"
     media = models.FileField(upload_to="game_media/", blank=True, null=True)
 
-class Meta:
+    class Meta:  # ← Properly indented now
         ordering = ['-date']  # Orders games by date, most recent first
 
     def __str__(self):
