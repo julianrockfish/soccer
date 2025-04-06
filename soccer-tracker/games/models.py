@@ -1,7 +1,5 @@
 from django.db import models
 
-from django.db import models
-
 class Game(models.Model):
     date = models.DateField()
     opponent = models.CharField(max_length=100)
@@ -10,6 +8,8 @@ class Game(models.Model):
     final_score = models.CharField(max_length=20)  # Example: "3-1 Win"
     media = models.FileField(upload_to="game_media/", blank=True, null=True)
 
+class Meta:
+        ordering = ['-date']  # Orders games by date, most recent first
+
     def __str__(self):
         return f"{self.date} vs {self.opponent}"
-    
