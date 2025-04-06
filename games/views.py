@@ -6,6 +6,7 @@ from .models import Game
 from .forms import GameForm  # You'll create this form in the next step
 from django.contrib.admin.views.decorators import staff_member_required  # Import this
 
+
 # Create Game
 @staff_member_required
 def create_game(request):
@@ -46,7 +47,8 @@ def list_games(request):
     return render(request, 'games/list_games.html', {'games': games})
 
 
-# Game Detail View
+# Detail Game
 def game_detail(request, pk):
     game = get_object_or_404(Game, pk=pk)
     return render(request, 'games/game_detail.html', {'game': game})
+

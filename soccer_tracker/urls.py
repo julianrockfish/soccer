@@ -6,8 +6,9 @@ from games import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', views.list_games, name='home'),  # Add a default route
+    path('', views.list_games, name='home'),
     path('games/', views.list_games, name='list_games'),
+    path('games/<int:pk>/', views.game_detail, name='game_detail'),  # Add this line
     path('games/create/', views.create_game, name='create_game'),
     path('games/update/<int:pk>/', views.update_game, name='update_game'),
     path('games/delete/<int:pk>/', views.delete_game, name='delete_game'),

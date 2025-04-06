@@ -23,7 +23,9 @@
         <tbody>
             {% for game in games %}
             <tr>
-                <td>{{ game.date }}</td>
+                <td><a href="{% url 'game_detail' game.pk %}">
+                    {{ game.date }}
+                </a></td>
                 <td>{{ game.goals }}</td>
                 <td>{{ game.assists }}</td>
                 <td>{{ game.opponent }}</td>
