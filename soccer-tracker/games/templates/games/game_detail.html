@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Details</title>
+</head>
+<body>
+    <h1>Game Details</h1>
+
+    <div>
+        <h2>{{ game.date }} vs {{ game.opponent }}</h2>
+        <p><strong>Final Score:</strong> {{ game.final_score }}</p>
+
+        <div>
+            <h3>Your Performance</h3>
+            <p><strong>Goals:</strong> {{ game.goals }}</p>
+            <p><strong>Assists:</strong> {{ game.assists }}</p>
+        </div>
+
+        {% if game.media %}
+        <div>
+            <h3>Game Media</h3>
+            {% if game.media.url|slice:"-3:" == "jpg" or game.media.url|slice:"-3:" == "png" or game.media.url|slice:"-4:" == "jpeg" %}
+                <img src="{{ game.media.url }}" alt="Game media" style="max-width: 100%; max-height: 400px;">
+            {% elif game.media.url|slice:"-3:" == "mp4" or game.media.url|slice:"-3:" == "mov" %}
+                <video controls style="max-width: 100%; max-height: 400px;">
+                    <source src="{{ game.media.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            {% else %}
+                <a href="{{ game.media.url }}" target="_blank">View Media</a>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div style="margin-top: 20px;">
+            <a href="{% url 'update_game' game.pk %}">Edit Game</a> |
+            <a href="{% url 'delete_game' game.pk %}">Delete Game</a> |
+            <a href="{% url 'list_games' %}">Back to Game List</a>
+        </div>
+    </div>
+</body>
+</html>
