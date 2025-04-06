@@ -1,0 +1,18 @@
+<!-- delete_game.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Game</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete this game?</h1>
+    <p>{{ game.date }} against {{ game.opponent }} - {{ game.final_score }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Delete Game</button>
+    </form>
+    <a href="{% url 'list_games' %}">Cancel</a>
+</body>
+</html>
